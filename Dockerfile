@@ -9,5 +9,5 @@ RUN dnf install -y https://zfsonlinux.org/fedora/zfs-release$(rpm -E %dist).noar
 
 CMD dnf install -y kernel-modules kernel-devel && \
     dnf install -y zfs-dkms && \
-    mkdir -p /opt/lib && \
-    cp -rf /lib/modules /opt/lib/
+    mkdir -p /opt/atomic-zfs/lib && \
+    cp -rf /lib/modules /opt/atomic-zfs/lib/
