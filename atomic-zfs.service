@@ -1,0 +1,16 @@
+[Unit]
+Description=Atomic ZFS
+Before=zfs-mount.service zfs-share.service zfs-zed.service zfs-import.target zfs-import-cache.service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+TimeoutStartSec=25m
+RemainAfterExit=true
+ExecStart=/usr/bin/atomic-zfs load
+ExecReload=/usr/bin/atomic-zfs reload
+ExecStop=/usr/bin/atomic-zfs unload
+
+[Install]
+WantedBy=basic.target
