@@ -7,8 +7,10 @@ source /etc/os-release
 build()
 {
   podman run --privileged --rm -v /var/atomic-zfs:/var/atomic-zfs quay.io/skateman/atomic-zfs:${VERSION_ID}
+  set +e
   OLD_IMAGES=$(podman images --format "{{.Repository}}:{{.Tag}}" | grep "quay\.io\/skateman\/atomic-zfs" | grep -v "\:${VERSION_ID}$")
-  [[ -z "$OLD_IMAGES" ]] && podman rmi $OLD_IMAGES
+  set -e
+  [[ -z "$OLD_IMAGES" ]] || podman rmi $OLD_IMAGES
 }
 
 case "$1" in
