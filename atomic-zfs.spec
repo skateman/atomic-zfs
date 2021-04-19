@@ -31,9 +31,12 @@ based Fedora installation using a regular rpm-based Fedora container.
 install -D %{SOURCE0} %{buildroot}%{_bindir}/atomic-zfs
 install -D %{SOURCE1} %{buildroot}%{_unitdir}/atomic-zfs.service
 install -D %{SOURCE2} %{buildroot}%{_docdir}/atomic-zfs/LICENSE
+install --directory %{buildroot}%{_localstatedir}/atomic-zfs
 
 %post
 %systemd_post atomic-zfs.service
+semanage fcontext -a -t container_file_t %{_localstatedir}/atomic-zfs
+restorecon -R %{_localstatedir}/atomic-zfs
 
 %preun
 %systemd_preun atomic-zfs.service
@@ -48,6 +51,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %attr(755, root, root) %{_bindir}/atomic-zfs
 %attr(644, root, root) %{_unitdir}/atomic-zfs.service
+%dir %{_localstatedir}/atomic-zfs
 
 %doc %{_docdir}/%{name}/LICENSE
 
