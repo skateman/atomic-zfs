@@ -1,8 +1,6 @@
 [Unit]
 Description=Atomic ZFS
 Before=zfs-mount.service zfs-share.service zfs-zed.service zfs-import.target zfs-import-cache.service
-After=network-online.target
-Wants=network-online.target
 
 [Service]
 Type=oneshot
