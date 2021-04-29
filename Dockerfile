@@ -1,4 +1,4 @@
-FROM fedora:33
+FROM fedora:34
 MAINTAINER "Dávid Halász"
 
 VOLUME /var/atomic-zfs
