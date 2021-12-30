@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:           atomic-zfs
-Version:        0.0.1
+Version:        0.0.2
 Release:        1%{?dist}
 Summary:        atomic-zfs, builds the ZFS kernel module for Fedora Atomic/Silverblue
 ExclusiveArch:  x86_64
