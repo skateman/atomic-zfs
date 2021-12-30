@@ -17,6 +17,7 @@ BuildRequires: systemd-rpm-macros
 
 Requires(pre):  shadow-utils
 Requires:       systemd podman
+Obsoletes:      zfs-kmod zfs-dkms
 
 %description
 This package is responsible for building and loading the ZFS kernel module in an rpm-ostree
